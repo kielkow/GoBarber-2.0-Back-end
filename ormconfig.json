@@ -6,12 +6,13 @@
   "password": "docker",
   "database": "gobarber_2.0",
   "entities": [
-    "./src/models/*.ts"
+    "./src/modules/appointments/entities/*.ts",
+    "./src/modules/users/entities/*.ts"
   ],
   "migrations": [
-    "./src/database/migrations/*.ts"
+    "./src/shared/database/migrations/*.ts"
   ],
   "cli": {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./src/shared/database/migrations"
   }
 }
