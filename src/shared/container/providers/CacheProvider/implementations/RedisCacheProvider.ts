@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Redis, { Redis as RedisClient } from 'ioredis';
 import cacheConfig from '@config/cache';
 import ICacheprovider from '../models/ICacheProvider';
@@ -24,6 +25,24 @@ export default class RedisCacheProvider implements ICacheprovider {
   }
 
   public async invalidate(key: string): Promise<void> {
-    console.log(key);
+    const foundKey = await this.client.keys(key);
+
+    const pipeline = this.client.pipeline();
+
+    pipeline.del(foundKey[0]);
+
+    await pipeline.exec();
+  }
+
+  public async invalidatePrefix(prefix: string): Promise<void> {
+    const keys = await this.client.keys(`${prefix}:*`);
+
+    const pipeline = this.client.pipeline();
+
+    keys.forEach(key => {
+      pipeline.del(key);
+    });
+
+    await pipeline.exec();
   }
 }
