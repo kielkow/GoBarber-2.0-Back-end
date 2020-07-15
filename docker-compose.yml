@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  gobarber-backend-2:
+    build: .
+    container_name: gobarber-backend-2
+    volumes:
+      - .:/home/node/api
+      - /home/node/api/node_modules
+    ports:
+      - '3333:3333'
+    depends_on:
+      - gobarber-backend-2-postgres
+      - gobarber-backend-2-mongo
+      - gobarber-backend-2-redis
+    networks:
+      - gobarber-backend-2-network
+
+  gobarber-backend-2-postgres:
+    image: postgres:11
+    container_name: gobarber-backend-2-postgres
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - DB_PASS=${DB_PASS}
+    volumes:
+      - gobarber-backend-2-postgres-data:/data
+    networks:
+      - gobarber-backend-2-network
+
+  gobarber-backend-2-mongo:
+    image: mongo:latest
+    container_name: gobarber-backend-2-mongo
+    environment:
+      - MONGO_URL=${MONGO_URL}
+    volumes:
+      - gobarber-backend-2-mongo-data:/data
+    networks:
+      - gobarber-backend-2-network
+
+  gobarber-backend-2-redis:
+    image: redis:alpine
+    container_name: gobarber-backend-2-redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - gobarber-backend-2-redis-data:/data
+    networks:
+      - gobarber-backend-2-network
+
+volumes:
+  gobarber-backend-2-postgres-data:
+  gobarber-backend-2-mongo-data:
+  gobarber-backend-2-redis-data:
+
+networks:
+  gobarber-backend-2-network:
+    driver: bridge
