@@ -11,10 +11,6 @@
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/kielkow/GoBarber-2.0-Back-end?color=%23FF9000">
 
-  <a href="https://www.linkedin.com/in/matheus-kielkowski-429b1617a/" target="_blank" rel="noopener noreferrer">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-elias%20gabriel-%23FF9000">
-  </a>
-
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/kielkow/GoBarber-2.0-Back-end?color=%23FF9000">
 
   <a href="https://github.com/kielkow/GoBarber-2.0-Back-end/commits/master">
@@ -25,7 +21,7 @@
     <img alt="Repository issues" src="https://img.shields.io/github/issues/kielkow/GoBarber-2.0-Back-end?color=%23FF9000">
   </a>
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/kielkow/GoBarber-2.0-Back-end?color=%23FF9000">
+  <img alt="GitHub" src="https://img.shields.io/github/license/EliasGcf/gobarber-api?color=%23FF9000">
 </p>
 
 <p align="center">
